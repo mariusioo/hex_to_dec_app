@@ -3,25 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hex to Decimal Converter</title>
+    <title>Duplicate Results</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body { background: #f8fafc; }
         .container { max-width: 600px; margin-top: 60px; }
         .card { box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
-        .form-label { font-weight: 500; }
-        .btn-primary { background: #4f46e5; border: none; }
-        .btn-primary:hover { background: #3730a3; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="card p-4">
-            <h2 class="mb-4 text-center">Hex to Decimal Converter</h2>
-            <p class="text-center">Welcome to the Hex to Decimal Converter. Please choose an option below.</p>
-            <div class="d-grid gap-2">
-                <a href="/convert" class="btn btn-primary btn-lg">Convert Hex to Decimal</a>
-                <a href="/scan_duplicates" class="btn btn-primary btn-lg">Scan for Duplicates</a>
+            <h2 class="mb-4 text-center">Duplicate Results</h2>
+            <p class="text-center">Found {{ duplicates|sum }} duplicates.</p>
+            <ul class="list-group">
+                {% for duplicate in duplicates %}
+                    <li class="list-group-item">{{ duplicate }}</li>
+                {% endfor %}
+            </ul>
+            <div class="mt-4 text-center">
+                <a href="{{ download_url }}" class="btn btn-primary">Download Comparison</a>
             </div>
         </div>
     </div>
